@@ -54,6 +54,24 @@ function change()
 	function checkValue()
 	{
 		var ct=0;
+		for (var i = 0; i < 4; i++) 
+		{
+			for(var j=0;j < 7;j++)
+			{
+				document.getElementById("e"+ct).setAttribute("style","width:30px;background:white;");
+				ct++;
+			}
+		}
+		ct=0;
+		for (var i = 0; i < 5; i++) 
+		{
+			for(var j=0;j < 5;j++)
+			{
+				document.getElementById("t"+ct).setAttribute("style","width:30px;background:white;");
+				ct++;
+			}
+		}
+		ct=0;
 		var emis=[];
 		for(var i=0;i<4;i++)
 		{
@@ -92,12 +110,6 @@ function change()
 								var idx=i*7+j;
 								document.getElementById("e"+idx).setAttribute("style","background:red;width:30px;");
 							}
-						else
-							{
-								var idx=i*7+j;
-								document.getElementById("e"+idx).removeAttribute("style");
-
-							}
 					}
 			}
 		for(var i=0;i<5;i++)
@@ -109,12 +121,6 @@ function change()
 								flag2=1;
 								var idx=i*5+j;
 								document.getElementById("t"+idx).setAttribute("style","background:red;width:30px;");
-							}
-						else if(trans[i][j] == answer_trans[i][j])
-							{
-								var idx=i*5+j;
-								document.getElementById("t"+idx).removeAttribute("style");
-								console.log("done");
 							}
 					}
 			}
