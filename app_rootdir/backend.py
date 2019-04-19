@@ -2,11 +2,7 @@ from flask import Flask, render_template, request
 import sqlite3 as sql
 app = Flask(__name__)
 
-# conn = sql.connect('database.db')
-# conn.execute('CREATE TABLE students (Question_1 TEXT,Question_2 TEXT,Question_3 TEXT,Question_4 TEXT)')
-# print ("Table created successfully");
-# conn.close()
-
+#Introduction.html rendered for both the home page and specific URL
 @app.route('/')
 def home():
    return render_template('Introduction.html')
@@ -44,29 +40,37 @@ def further_reading():
 def addrec():
    if request.method == 'POST':
       try:
-         nm = request.form['q1']
-         addr = request.form['q2']
-         city = request.form['q3']
-         pin = request.form['q4']
+         Q1 = request.form['q1']#Input for question1 of the quiz taken
+         Q2 = request.form['q2']#--do--
+         Q3 = request.form['q3']#--do--
+         Q4 = request.form['q4']#--do--
          
          with sql.connect("database.db") as con:
             cur = con.cursor()
-            if(nm is "" or addr is "" or city is "" or pin is ""):
+            if(Q1 is "" or Q2 is "" or Q3 is "" or Q4 is ""):
                msg = "One or more empty answers. So no submission.";
+               #if any of the fields are empty throw this error message
             else:
-               cur.execute("INSERT INTO students (Question_1,Question_2,Question_3,Question_4) VALUES (?,?,?,?)",(nm,addr,city,pin))
+               cur.execute("INSERT INTO students (Question_1,Question_2,Question_3,Question_4) VALUES (?,?,?,?)",(Q1,Q2,Q3,Q4))
                con.commit()
+               #if all fields have been filled then insert the entry into the database
                msg = "Record successfully added"
       except:
          con.rollback()
          msg = "Error in insert operation"
+         #Except block to print this error message incase the insertion wasnt successful
       
       finally:
          return render_template("Result.html",msg = msg)
          con.close()
+         #once the entries have been made into the database the result.html is rendered
 
 @app.route('/Answers.html/')
 def answers():
+    ''' This function prints the contents of the database
+    Input parameter- None
+    Return value- Renders Answers.html again
+    Prints the values of the answers in the database row wise'''
    con = sql.connect("database.db")
    con.row_factory = sql.Row
    
@@ -76,18 +80,6 @@ def answers():
    rows = cur.fetchall();
    print("rows=");print(len(rows));
    return render_template('Answers.html',rows = rows)
-
-
-# @app.route('/list')
-# def list():
-#    con = sql.connect("database.db")
-#    con.row_factory = sql.Row
-   
-#    cur = con.cursor()
-#    cur.execute("select * from students")
-   
-#    rows = cur.fetchall();
-#    return render_template("list.html",rows = rows)
 
 if __name__ == '__main__':
    app.run(debug = True)
