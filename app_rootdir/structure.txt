@@ -1,0 +1,166 @@
+.
+├── 2018101085_2018113012.txt		// -> Link to github and gitlab repositories.
+│
+├── app.py							// -> Main file to run all the processes.
+│
+├── database.db 					// -> Database to store the answers that users submit on quiz page.
+│
+├── README.md 						// -> Readme for Documentation of Project.
+│
+├── requirements.sh 				// -> Script to install all required modules to run this project.
+│
+├── static 							// -> This is the static folder used to link all the images, html(s), js and css related to project.
+│ 	│						
+│   ├── bootstrap.min.js 			// -> Bootstrap.js file for making project responsive and look better.
+│   │
+│   ├── cps 						// -> Contains all the html files required for Experiment.html.
+│ 	│	│					
+│   │   ├── corpus1.html
+│   │   ├── corpus2.html
+│   │   └── corpus3.html
+│   ├── css 						// -> Contains all css files.
+│ 	│   │
+│   │   ├── bootstrap.min.css
+│   │   ├── style1.css
+│   │   └── style.css
+│   ├── custom.js 					// -> Custom javaScript file provided for the UI implimentation.
+│   │
+│   ├── images 						// -> All images used in project are present here.
+│ 	│   │
+│   │   ├── about-us
+│   │   │   ├── img1.png
+│   │   │   ├── img2.png
+│   │   │   ├── img3.png
+│   │   │   └── img4.png
+│   │   ├── banner_img.jpg
+│   │   ├── bottom-line-n.png
+│   │   ├── bottom-line.png
+│   │   ├── chat.png
+│   │   ├── deivder-green-v.png
+│   │   ├── devider-blue-v-o.png
+│   │   ├── devider-green-v-o.png
+│   │   ├── dotted-devider-h-o.png
+│   │   ├── dotted-devider-h.png
+│   │   ├── _dotted-devider.png
+│   │   ├── dotted-devider-v-o.png
+│   │   ├── engineering
+│   │   │   ├── icon_1.png
+│   │   │   ├── icon_2.png
+│   │   │   ├── icon_3.png
+│   │   │   ├── icon_4.png
+│   │   │   ├── icon_5.png
+│   │   │   ├── icon_6.png
+│   │   │   ├── icon_7.png
+│   │   │   ├── icon_8.png
+│   │   │   ├── icon_9.png
+│   │   │   └── old
+│   │   │       ├── biotechnology-eng.png
+│   │   │       ├── chamical-eng.png
+│   │   │       ├── chemical-sci.png
+│   │   │       ├── civil-eng.png
+│   │   │       ├── electrical-eng.png
+│   │   │       └── electronics-eng.png
+│   │   ├── favicon.ico
+│   │   ├── favicon.png
+│   │   ├── flask.png
+│   │   ├── footer-o.png
+│   │   ├── _footer.png
+│   │   ├── footer.png
+│   │   ├── hmm.jpg
+│   │   ├── icon_chat.png
+│   │   ├── icon_lab.png
+│   │   ├── iit
+│   │   │   ├── amrita.jpeg
+│   │   │   ├── amrita.png
+│   │   │   ├── dayalbagh.jpeg
+│   │   │   ├── iit-delhi.png
+│   │   │   ├── iit-guwahati.png
+│   │   │   ├── iithyderabad.jpeg
+│   │   │   ├── iit-kanpur.png
+│   │   │   ├── iit-kharagpur.png
+│   │   │   ├── iit-madras.png
+│   │   │   ├── iit-mumbai.png
+│   │   │   ├── iit-roorkee.png
+│   │   │   ├── nit.jpeg
+│   │   │   ├── pune.jpeg
+│   │   │   └── rsz_1amrita.jpg
+│   │   ├── left-arrow.png
+│   │   ├── logo-new.png
+│   │   ├── logo.png
+│   │   ├── right-arrow.png
+│   │   ├── search-box.png
+│   │   ├── search.png
+│   │   ├── slider-72.png
+│   │   ├── slider.png
+│   │   ├── social
+│   │   │   ├── fb.png
+│   │   │   ├── linkedin.png
+│   │   │   ├── twitter.png
+│   │   │   └── youtube.png
+│   │   ├── students.png
+│   │   └── uni-logos
+│   │       ├── amruta university.png
+│   │       ├── amrutauniversity.png
+│   │       ├── COEP.png
+│   │       ├── dayalbagh.png
+│   │       ├── iiit_Hyd.png
+│   │       ├── IIT_bombay.png
+│   │       ├── IIT_Delhi.png
+│   │       ├── IIT_guwahati.png
+│   │       ├── IIT_hyderabad.png
+│   │       ├── IIT_kanpur.png
+│   │       ├── IIT_kharagpur.png
+│   │       ├── IIT_madras.png
+│   │       ├── IIT_roorkee.png
+│   │       └── NIIT_karnataka.png
+│   ├── jquery.js 					// -> jQuery module file.						
+│ 	│
+│   ├── js 							// -> All the javaScript used in the project is present here.
+│ 	│
+│   │   ├── bootstrap.min.js
+│   │   ├── custom.js
+│   │   └── jquery.js
+│   └── vendors     				// -> Themes and font related stuff is present inside this folder.
+│       ├── font-awesome
+│       │   ├── css
+│       │   │   ├── font-awesome.css
+│       │   │   └── font-awesome.min.css
+│       │   └── fonts
+│       │       ├── FontAwesome.otf
+│       │       ├── fontawesome-webfont.eot
+│       │       ├── fontawesome-webfont.svg
+│       │       ├── fontawesome-webfont.ttf
+│       │       ├── fontawesome-webfont.woff
+│       │       └── fontawesome-webfont.woff2
+│       └── owl-carousel
+│           ├── AjaxLoader.gif
+│           ├── grabbing.png
+│           ├── owl.carousel.css
+│           ├── owl.carousel.js
+│           └── owl.theme.css
+│
+├── structure.txt  					// -> This file telling the file and folder structure of the project.
+│
+├── templates 						// -> This is the main folder containing all the templates that are to be rendered in app.py .
+│ 	│
+│   ├── Answers.html
+│   ├── Experiment.html
+│   ├── Further_Readings.html
+│   ├── Introduction.html
+│   ├── Objective.html
+│   ├── Procedure.html
+│   ├── Quizzes.html
+│   ├── Result.html
+│   └── Theory.html
+│
+└── test_cases 						// -> This folder contains 5 testcases,1 testcase generator python code & one bash script to unite them.
+ 	│
+    ├── in1.txt
+    ├── in2.txt
+    ├── in3.txt
+    ├── in4.txt
+    ├── in5.txt
+    ├── testgen.py
+    └── wrapper.sh
+
+18 directories, 127 files

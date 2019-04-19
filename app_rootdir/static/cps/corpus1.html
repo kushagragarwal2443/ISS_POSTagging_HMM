@@ -81,8 +81,10 @@ function change()
 				{
 					var temp = document.getElementById("e"+ct).value;
 					row.push(temp);
+					/*Pushed the values taken into row list*/
 					ct++;
 				}
+			/*Pushed the entire row list into the column list*/
 			emis.push(row);
 		}
 		ct=0;
@@ -95,15 +97,19 @@ function change()
 				{
 					var temp = document.getElementById("t"+ct).value;
 					row.push(temp);
+					/*Pushed the values taken into row list*/
 					ct++;
 				}
+			/*Pushed the entire row list into the column list*/
 			trans.push(row);
 		}
 		/*We stored answers of both the transition and the emission matrices in arrays instead of calling from database as database was used in the quiz*/
-
 		var answer_emis=[[0,0,0,0,0,1,1],[0.5,0.5,1,0,0,0,0],[0.5,0.5,0,1,0,0,0],[0,0,0,0,1,0,0]]
+		/*answer for emission matrix stored*/
     	var answer_trans=[[0,0.33,0,0.5,0],[0,0,1,0,0],[1,0,0,0.5,0],[0,0.33,0,0,1],[0,0.33,0,0,0]]
+		/*answer for transition matrix stored*/
     	var flag1=0,flag2=0;
+		/*flag variables to check for entire correctness of input matrices to answer matrices*/
 		for(var i=0;i<4;i++)
 			{
 				for(var j=0;j<7;j++)
@@ -111,6 +117,7 @@ function change()
 						if(emis[i][j] != answer_emis[i][j])
 							{
 								flag1=1;
+								/*the emission matrix entered is wrong*/
 								var idx=i*7+j;
 								/*for mismatch we need to convert the cell to Red background*/
 								document.getElementById("e"+idx).setAttribute("style","background:red;width:30px;");
@@ -124,25 +131,31 @@ function change()
 						if(trans[i][j] != answer_trans[i][j])
 							{
 								flag2=1;
+								/*the transition matrix enterd is wrong*/
 								var idx=i*5+j;
+								/*for mismatch we need to convert the cells bakcground to red*/
 								document.getElementById("t"+idx).setAttribute("style","background:red;width:30px;");
 							}
 					}
 			}
 		if(flag1==0 && flag2==0)
 			{
+				/*if both the matrices were correctly entered*/
 				document.getElementById("rw").innerHTML = "<br/><br/><p id='right_wrong' style='text-align:center;font-size:30px;color:#008000'>Right answer!!!</p>";
 			}
 		else if(flag1==0 && flag2==1)
 			{
+				/*if the transition matrix was wrong but the emission matrix entered was right*/
 				document.getElementById("rw").innerHTML = "<br/><br/><p id='right_wrong' style='text-align:center;font-size:30px;color:#FF0000'>Wrong Transition Matrix!!!</p><br/><br/><div id='get_hide'><button onclick=\"getAnswer(0,1);\">Get Answers</button></div>";
 			}
 		else if(flag1==1 && flag2==0)
 			{
+				/*If emission was wrong but transition was correct*/
 				document.getElementById("rw").innerHTML = "<br/><br/><p id='right_wrong' style='text-align:center;font-size:30px;color:#FF0000'>Wrong Emission Matrix!!!</p><br/><br/><div id='get_hide'><button onclick=\"getAnswer(1,0);\">Get Answers</button></div>";
 			}
 		else
 			{
+				/*if both were wrongly entered*/
 				document.getElementById("rw").innerHTML = "<br/><br/><p id='right_wrong' style='text-align:center;font-size:30px;color:#FF0000'>Wrong Emission and Transition Matrix!!!</p><br/><br/><div id='get_hide'><button onclick=\"getAnswer(1,1);\">Get Answers</button></div>";
 			}
 	}
@@ -150,14 +163,12 @@ function change()
 	{
 		if(f1==0)
 			{
-				/*document.getElementById("answer").innerHTML = "<table width=\"50%\" style=\"background-color:#FFD4A8; padding:0px; margin:0px\"><tbody><tr><th>Emission Matrix</th></tr><tr><td align=\"center\"><table width=\"100%\" style=\"padding:0px; margin:0px\"><tbody><tr><td></td><td align=\"center\"><b>book</b></td><td align=\"center\"><b>park</b></td><td align=\"center\"><b>car</b></td><td align=\"center\"><b>is</b></td><td align=\"center\"><b>in</b></td><td align=\"center\"><b>a</b></td><td align=\"center\"><b>the</b></td></tr><tr><td align=\"center\"><b>determiner</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">1</td></tr><tr><td align=\"center\"><b>noun</b></td><td align=\"center\">0.5</td><td align=\"center\">0.5</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>verb</b></td><td align=\"center\">0.5</td><td align=\"center\">0.5</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>preposition</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td></tr></tbody></table></td></tr></tbody></table>";
-				*/document.getElementById("answer").innerHTML = document.getElementById("answer").innerHTML + "<table width=\"50%\" style=\"background-color:#FFD4A8; padding:0px; margin:0px\"><tbody><tr><th>Transition Matrix</th></tr><tr><td align=\"center\"><table width=\"100%\" style=\"padding:0px;margin:0px\"><tbody><tr><td></td><td align=\"center\"><b>eos</b></td><td align=\"center\"><b>determiner</b></td><td align=\"center\"><b>noun</b></td><td align=\"center\"><b>verb</b></td><td align=\"center\"><b>preposition</b></td></tr><tr><td align=\"center\"><b>eos</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0.5</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>determiner</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>noun</b></td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0.5</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>verb</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td></tr><tr><td align=\"center\"><b>preposition</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr></tbody></table></td></tr></tbody></table>\"";
+				document.getElementById("answer").innerHTML = document.getElementById("answer").innerHTML + "<table width=\"50%\" style=\"background-color:#FFD4A8; padding:0px; margin:0px\"><tbody><tr><th>Transition Matrix</th></tr><tr><td align=\"center\"><table width=\"100%\" style=\"padding:0px;margin:0px\"><tbody><tr><td></td><td align=\"center\"><b>eos</b></td><td align=\"center\"><b>determiner</b></td><td align=\"center\"><b>noun</b></td><td align=\"center\"><b>verb</b></td><td align=\"center\"><b>preposition</b></td></tr><tr><td align=\"center\"><b>eos</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0.5</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>determiner</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>noun</b></td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0.5</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>verb</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td></tr><tr><td align=\"center\"><b>preposition</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr></tbody></table></td></tr></tbody></table>\"";
 			}
 		else if(f2==0)
 			{
 				document.getElementById("answer").innerHTML = "<table width=\"50%\" style=\"background-color:#FFD4A8; padding:0px; margin:0px\"><tbody><tr><th>Emission Matrix</th></tr><tr><td align=\"center\"><table width=\"100%\" style=\"padding:0px; margin:0px\"><tbody><tr><td></td><td align=\"center\"><b>book</b></td><td align=\"center\"><b>park</b></td><td align=\"center\"><b>car</b></td><td align=\"center\"><b>is</b></td><td align=\"center\"><b>in</b></td><td align=\"center\"><b>a</b></td><td align=\"center\"><b>the</b></td></tr><tr><td align=\"center\"><b>determiner</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">1</td></tr><tr><td align=\"center\"><b>noun</b></td><td align=\"center\">0.5</td><td align=\"center\">0.5</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>verb</b></td><td align=\"center\">0.5</td><td align=\"center\">0.5</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>preposition</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td></tr></tbody></table></td></tr></tbody></table>";
-				/*document.getElementById("answer").innerHTML = document.getElementById("answer").innerHTML + "<table width=\"50%\" style=\"background-color:#FFD4A8; padding:0px; margin:0px\"><tbody><tr><th>Transition Matrix</th></tr><tr><td align=\"center\"><table width=\"100%\" style=\"padding:0px;margin:0px\"><tbody><tr><td></td><td align=\"center\"><b>eos</b></td><td align=\"center\"><b>determiner</b></td><td align=\"center\"><b>noun</b></td><td align=\"center\"><b>verb</b></td><td align=\"center\"><b>preposition</b></td></tr><tr><td align=\"center\"><b>eos</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0.5</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>determiner</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>noun</b></td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0.5</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>verb</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td></tr><tr><td align=\"center\"><b>preposition</b></td><td align=\"center\">0</td><td align=\"center\">0.33</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr></tbody></table></td></tr></tbody></table>\"";
-			*/}
+			}
 		else
 			{
 				document.getElementById("answer").innerHTML = "<table width=\"50%\" style=\"background-color:#FFD4A8; padding:0px; margin:0px\"><tbody><tr><th>Emission Matrix</th></tr><tr><td align=\"center\"><table width=\"100%\" style=\"padding:0px; margin:0px\"><tbody><tr><td></td><td align=\"center\"><b>book</b></td><td align=\"center\"><b>park</b></td><td align=\"center\"><b>car</b></td><td align=\"center\"><b>is</b></td><td align=\"center\"><b>in</b></td><td align=\"center\"><b>a</b></td><td align=\"center\"><b>the</b></td></tr><tr><td align=\"center\"><b>determiner</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">1</td></tr><tr><td align=\"center\"><b>noun</b></td><td align=\"center\">0.5</td><td align=\"center\">0.5</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>verb</b></td><td align=\"center\">0.5</td><td align=\"center\">0.5</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td></tr><tr><td align=\"center\"><b>preposition</b></td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">0</td><td align=\"center\">1</td><td align=\"center\">0</td><td align=\"center\">0</td></tr></tbody></table></td></tr></tbody></table>";
