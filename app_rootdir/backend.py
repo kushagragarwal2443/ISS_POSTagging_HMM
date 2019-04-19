@@ -5,36 +5,80 @@ app = Flask(__name__)
 #Introduction.html rendered for both the home page and specific URL
 @app.route('/')
 def home():
+   '''This function renders Introduction.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
    return render_template('Introduction.html')
 
 @app.route('/Introduction.html/')
 def introduction():
+   '''This function renders Introduction.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
+
    return render_template('Introduction.html')
 
+#Theory.html rendered at this URL
 @app.route('/Theory.html/')
 def theory():
+   '''This function renders Theory.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
+
    return render_template('Theory.html')
 
+#Objective.html rendered at this URL
 @app.route('/Objective.html/')
 def objective():
+   '''This function renders Objective.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
+
    return render_template('Objective.html')
 
+#Experiment.html rendered at this URL
 @app.route('/Experiment.html/')
 def experiment():
+   '''This function renders Experiment.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
+
    return render_template('Experiment.html')
 
+#Quizzes.html rendered at this URL
 @app.route('/Quizzes.html/')
 def quizzes():
+   '''This function renders Quizzes.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
+
    return render_template('Quizzes.html')
 
+#Procedure.html rendered at this URL
 @app.route('/Procedure.html/')
 def procedure():
+   '''This function renders Procedure.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
+
    return render_template('Procedure.html')
 
+#Further_Readings.html rendered at this URL
 @app.route('/Further_Readings.html/')
 def further_reading():
-   return render_template('Further_Readings.html')
+   '''This function renders Further_Readings.html
+   Input Type- None
+   Return Value- renders the aforementioned html file
+   Prints nothing'''
 
+   return render_template('Further_Readings.html')
 
 @app.route('/addrec',methods = ['POST', 'GET'])
 def addrec():
