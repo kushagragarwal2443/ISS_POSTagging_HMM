@@ -67,10 +67,11 @@ def addrec():
 
 @app.route('/Answers.html/')
 def answers():
-    ''' This function prints the contents of the database
-    Input parameter- None
-    Return value- Renders Answers.html again
-    Prints the values of the answers in the database row wise'''
+   ''' This function prints the contents of the database
+   Input parameter- None
+   Return value- Renders Answers.html again
+   Prints the values of the answers in the database row wise'''
+
    con = sql.connect("database.db")
    con.row_factory = sql.Row
    
