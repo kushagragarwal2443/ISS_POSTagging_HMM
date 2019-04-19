@@ -3,7 +3,8 @@
 Welcome,
 
     This repository is part of submission of ISS assignment 4.
-    The assignment is related to topics such as web development in back-end and also its merger with front-end.
+    The assignment is related to topics such as web development in back-end and also its unification with
+    front-end development.
     We have used mainly two python modules namely : 1. Flask 2. SQLite.
 
 
@@ -24,7 +25,7 @@ virtual lab repository of IIIT-Hyderabad.
 
 The Experiment-
 
-    The experiment would ask you to select a corpus a,b or c. Having done this, you will be asked to fill an 
+    The experiment would ask you to select a corpus a,b or c. Having done this, you will be asked to fill an
     emission and transition matrix on the basis of a sentence given. Once you have entered your answers you 
     will be told how many of your values were correct and how many werent. 
     
